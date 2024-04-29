@@ -1,0 +1,10 @@
+# File variables
+# GET https://{{host}}/rest/api
+@test_host=localhost:3000/api/
+@host=app.flexichatbot.com/rest/api/v1
+@host2=api-staging.flexibot.tech
+@authorization_token=20104E276D
+
+# Obtener dashboard
+GET https://{{host}}/dashboard/ HTTP/1.1
+Authorization: {{authorization_token}}
