@@ -58,6 +58,9 @@ export const procesarTurno = function (item: Turno | null): TurnoResponse | unde
     const estadoColor = getEstadoColor((item.estado?.EstTQCod as string) || '')
 
     return {
+        id: item.TurID,
+        sala: item.TurSala as number,
+        fecha: item.Turfecha,
         horaIni,
         horaFinal,
         horaInicio,
@@ -68,13 +71,13 @@ export const procesarTurno = function (item: Turno | null): TurnoResponse | unde
         nroHistoria: nroHistoria || 0,
         habitacion: habitacion || 0,
         cama: cama || 0,
-        obraSocial: obraSocial || '',
-        planCobertura: planCobertura || '',
-        medicoNombre: medicoNombre || '',
-        medicoEspecialidad: medicoEspecialidad || '',
-        observaciones: observaciones || '',
-        cirugia: cirugia || '',
-        estado: estado || '',
+        obraSocial: obraSocial ? obraSocial.trim() : '',
+        planCobertura: planCobertura ? planCobertura.trim() : '',
+        medicoNombre: medicoNombre ? medicoNombre.trim() : '',
+        medicoEspecialidad: medicoEspecialidad ? medicoEspecialidad.trim() : '',
+        observaciones: observaciones ? observaciones.trim() : '',
+        cirugia: cirugia ? cirugia.trim() : '',
+        estado: estado ? estado.trim() : '',
         estadoColor
     }
 }
@@ -114,7 +117,7 @@ export const procesarTurnos = async (turnos: TurnoPrisma[]): Promise<TurnoRespon
     // Filtro los turnos que no tienen internación o estado
     const filtered = response.filter(turno => {
         if (!turno) return false
-        if (!turno.habitacion || !turno.estado) return false
+        // if (!turno.habitacion || !turno.estado) return false // ¿Por qué filtro los turnos que no tienen habitación o estado?
         return true
     }) as unknown as TurnoResponse[]
 

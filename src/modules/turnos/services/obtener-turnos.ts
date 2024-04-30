@@ -9,6 +9,9 @@ export const obtenerTurnos = async ({ where }: Where): Promise<TurnoResponse[]> 
     const turnos: TurnoPrisma[] = await prismadb.tURNOS.findMany({
         where,
         select: {
+            TurID: true,
+            TurSala: true,
+            Turfecha: true,
             TurEstado: true,
             TurDNIPte: true,
             TurNroIntInter: true,

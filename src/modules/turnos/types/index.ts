@@ -20,6 +20,9 @@ export type Especialidad = Pick<ESPECIALIDADES, 'ESCodigo' | 'ESDescripcion'>
 export type Medico = Pick<MEDICOS, 'MECodigo' | 'MENombre' | 'MEEspecialidad'> & { especialidad: Especialidad }
 export type TurnoPrisma = Pick<
     TURNOS,
+    | 'TurID'
+    | 'TurSala'
+    | 'Turfecha'
     | 'TurDNIPte'
     | 'TurOsCodigo'
     | 'TurNroIntInter'
@@ -40,6 +43,9 @@ export type Turno = TurnoPrisma & {
 }
 
 export type TurnoResponse = {
+    id: number
+    sala: number
+    fecha: Date | null
     horaIni: number
     horaFinal: number
     horaInicio: string
@@ -58,4 +64,25 @@ export type TurnoResponse = {
     cirugia: string
     estado: string
     estadoColor: string
+}
+
+export interface HorarioDeQuirofano {
+    horaInicio: number | null
+    minutoInicio: number | null
+    horaFin: number | null
+    minutoFin: number | null
+}
+
+export interface DiaDeQuirofano {
+    disponible: boolean
+    dia: string
+    id: number
+    horarios: HorarioDeQuirofano
+}
+
+export interface SalaResponse {
+    id: number
+    nombre: string
+    duracionTurno: number | null
+    diasYHorarios: DiaDeQuirofano[]
 }

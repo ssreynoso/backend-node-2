@@ -1,8 +1,11 @@
 import prismadb from '@/lib/prismadb'
-import { SALAS } from '@prisma/client'
+import { Sala, SalaResponse } from '@/modules/turnos/types'
+import { procesarSala } from './procesar-sala'
 
-export const obtenerSalas = async (): Promise<SALAS[]> => {
-    const salas: SALAS[] = await prismadb.sALAS.findMany({})
+export const obtenerSalas = async (): Promise<SalaResponse[]> => {
+    const salas: Sala[] = await prismadb.sALAS.findMany({})
 
-    return salas
+    const salasProcesadas: SalaResponse[] = salas.map(sala => procesarSala(sala))
+
+    return salasProcesadas
 }

@@ -16,7 +16,6 @@ export const getTurnosSala = async (req: Request, res: Response) => {
             }
         })
 
-        // Proceso los turnos
         res.status(200).json({ turnos })
     } catch (error) {
         // Si hay un error, lo muestro en consola
