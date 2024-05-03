@@ -1,5 +1,5 @@
 import prismadb from '@/lib/prismadb'
-import { Sala, SalaResponse } from '@/modules/turnos/types'
+import { Sala, SalaResponse } from '../types'
 import { procesarSala } from './procesar-sala'
 
 export const obtenerSalas = async (): Promise<SalaResponse[]> => {

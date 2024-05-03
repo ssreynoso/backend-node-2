@@ -1,5 +1,5 @@
 import { procesarHora } from '@/core/lib/procesar-hora'
-import { DiaDeQuirofano } from '@/modules/turnos/types'
+import { DiaDeQuirofano } from '../types'
 
 type Params = {
     id: number

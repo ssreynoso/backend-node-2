@@ -3,9 +3,9 @@ import { formatZone } from '@/lib/date'
 import { getEstadoColor } from '@/lib/monitor'
 import { obtenerEstado } from './obtener-estado'
 import { obtenerHistoriaClinica } from './obtener-historia-clinica'
-import { obtenerInternacion } from './obtener-internacion'
 import { obtenerObraSocial } from './obtener-obra-social'
 import { obtenerMedico } from './obtener-medico'
+import { obtenerInternacion } from '@/modules/internaciones/services/obtener-internacion'
 
 export const procesarTurno = function (item: Turno | null): TurnoResponse | undefined {
     if (!item) return undefined

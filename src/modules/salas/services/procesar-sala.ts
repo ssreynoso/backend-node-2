@@ -1,4 +1,4 @@
-import { DiaDeQuirofano, Sala, SalaResponse } from '@/modules/turnos/types'
+import { DiaDeQuirofano, Sala, SalaResponse } from '../types'
 import { procesarDia } from './procesar-dia'
 
 export const procesarSala = (sala: Sala): SalaResponse => {

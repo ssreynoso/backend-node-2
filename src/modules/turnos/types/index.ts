@@ -1,18 +1,7 @@
-import {
-    TURNOS,
-    CONTRATO,
-    ESPECIALIDADES,
-    ESTADOSTURNOQX,
-    HISTORIAS,
-    INTERNAD,
-    MEDICOS,
-    OBRASOCIAL,
-    SALAS
-} from '@prisma/client'
+import { Internacion } from '@/modules/internaciones/types'
+import { TURNOS, CONTRATO, ESPECIALIDADES, ESTADOSTURNOQX, HISTORIAS, MEDICOS, OBRASOCIAL } from '@prisma/client'
 
-export type Sala = SALAS
 export type HistoriaClinica = Pick<HISTORIAS, 'HCNumero' | 'HCNombre' | 'HCApeSol' | 'HCFechaNacim' | 'HCSexo'>
-export type Internacion = Pick<INTERNAD, 'INHabitacion' | 'INCama'>
 export type Plan = Pick<CONTRATO, 'CoPlan' | 'CoNomPlan'>
 export type ObraSocial = Pick<OBRASOCIAL, 'OSRazonSocial'> & { plan: Plan }
 export type Estado = Pick<ESTADOSTURNOQX, 'EstTQDsc' | 'EstTQCod'>
@@ -64,25 +53,4 @@ export type TurnoResponse = {
     cirugia: string
     estado: string
     estadoColor: string
-}
-
-export interface HorarioDeQuirofano {
-    horaInicio: number | null
-    minutoInicio: number | null
-    horaFin: number | null
-    minutoFin: number | null
-}
-
-export interface DiaDeQuirofano {
-    disponible: boolean
-    dia: string
-    id: number
-    horarios: HorarioDeQuirofano
-}
-
-export interface SalaResponse {
-    id: number
-    nombre: string
-    duracionTurno: number | null
-    diasYHorarios: DiaDeQuirofano[]
 }
