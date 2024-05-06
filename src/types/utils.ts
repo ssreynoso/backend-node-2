@@ -12,3 +12,5 @@ export interface IError extends Error {
 }
 
 export type Response<T> = { data: T; error: null } | { data: null; error: IError }
+
+export const NULL_DATE = new Date('1753-01-01')

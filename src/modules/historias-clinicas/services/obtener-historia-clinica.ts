@@ -1,5 +1,5 @@
 import prismadb from '@/lib/prismadb'
-import { HistoriaClinica } from '@/modules/turnos/types'
+import { HistoriaClinica } from '../types'
 
 export const obtenerHistoriaClinica = async (historiaClinicaId: number | null): Promise<HistoriaClinica | null> => {
     let historiaClinica: HistoriaClinica | null = null

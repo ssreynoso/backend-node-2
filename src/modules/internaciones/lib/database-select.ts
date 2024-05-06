@@ -3,6 +3,8 @@ export const InternacionSelect = {
     INNumero: true,
     INHabitacion: true,
     INCama: true,
+    INAcomp: true,
+    INAislado: true,
     INHCNumIng: true,
     INFechaIngreso: true,
     INFechaEgreso: true,
@@ -11,5 +13,6 @@ export const InternacionSelect = {
     INFinFecProtocolo: true,
     INLugar: true,
     INObraSocial: true,
+    INPlan: true,
     INNumAfiliado: true
 }

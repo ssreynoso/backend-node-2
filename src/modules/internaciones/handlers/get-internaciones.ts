@@ -1,6 +1,6 @@
 import { ConsoleLogger } from '@/shared/logger/console-logger'
 import { Request, Response } from 'express'
-import { obtenerInternaciones } from '../services/obtener-internados'
+import { obtenerInternacionesVigentes } from '../services/obtener-internaciones-vigentes'
 
 export const getInternaciones = async (req: Request, res: Response) => {
     try {
@@ -8,10 +8,10 @@ export const getInternaciones = async (req: Request, res: Response) => {
         const offset = req.query.offset ? Number.parseInt(req.query.offset as string) : 10
 
         // Obtengo las internaciones
-        const internaciones = await obtenerInternaciones(limit, offset)
+        const internacionesVigentes = await obtenerInternacionesVigentes(limit, offset)
 
         // Respondo con las internaciones
-        res.status(200).json({ internaciones })
+        res.status(200).json({ internaciones: internacionesVigentes })
     } catch (error) {
         // Si hay un error, lo muestro en consola
         const logger = new ConsoleLogger()

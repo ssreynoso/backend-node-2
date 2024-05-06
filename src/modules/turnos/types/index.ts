@@ -1,9 +1,8 @@
+import { HistoriaClinica } from '@/modules/historias-clinicas/types'
 import { Internacion } from '@/modules/internaciones/types'
-import { TURNOS, CONTRATO, ESPECIALIDADES, ESTADOSTURNOQX, HISTORIAS, MEDICOS, OBRASOCIAL } from '@prisma/client'
+import { ObraSocial } from '@/modules/obras-sociales/types'
+import { TURNOS, ESPECIALIDADES, ESTADOSTURNOQX, MEDICOS } from '@prisma/client'
 
-export type HistoriaClinica = Pick<HISTORIAS, 'HCNumero' | 'HCNombre' | 'HCApeSol' | 'HCFechaNacim' | 'HCSexo'>
-export type Plan = Pick<CONTRATO, 'CoPlan' | 'CoNomPlan'>
-export type ObraSocial = Pick<OBRASOCIAL, 'OSRazonSocial'> & { plan: Plan }
 export type Estado = Pick<ESTADOSTURNOQX, 'EstTQDsc' | 'EstTQCod'>
 export type Especialidad = Pick<ESPECIALIDADES, 'ESCodigo' | 'ESDescripcion'>
 export type Medico = Pick<MEDICOS, 'MECodigo' | 'MENombre' | 'MEEspecialidad'> & { especialidad: Especialidad }

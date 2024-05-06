@@ -1,24 +1,6 @@
 import prismadb from '@/lib/prismadb'
-import { ObraSocial, Plan } from '@/modules/turnos/types'
-
-const obtenerPlan = async (obraSocialId: number, planId: string | null): Promise<Plan | null> => {
-    let plan: Plan | null = null
-    if (planId) {
-        const temp = await prismadb.cONTRATO.findMany({
-            where: {
-                OSCodigo: obraSocialId,
-                CoPlan: planId
-            },
-            select: {
-                CoPlan: true,
-                CoNomPlan: true
-            }
-        })
-        plan = temp[0]
-    }
-
-    return plan
-}
+import { ObraSocial } from '../types'
+import { obtenerPlan } from '@/modules/plan/services/obtener-plan'
 
 export const obtenerObraSocial = async (
     obraSocialId: number | null,
@@ -30,6 +12,7 @@ export const obtenerObraSocial = async (
         const OS = await prismadb.oBRASOCIAL.findUnique({
             where: { OSCodigo: obraSocialId },
             select: {
+                OSCodigo: true,
                 OSRazonSocial: true
             }
         })

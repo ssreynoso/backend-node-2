@@ -2,10 +2,11 @@ import { Turno, TurnoPrisma, TurnoResponse } from '@/modules/turnos/types'
 import { formatZone } from '@/lib/date'
 import { getEstadoColor } from '@/lib/monitor'
 import { obtenerEstado } from './obtener-estado'
-import { obtenerHistoriaClinica } from './obtener-historia-clinica'
-import { obtenerObraSocial } from './obtener-obra-social'
+import { obtenerHistoriaClinica } from '../../historias-clinicas/services/obtener-historia-clinica'
+import { obtenerObraSocial } from '../../obras-sociales/services/obtener-obra-social'
 import { obtenerMedico } from './obtener-medico'
 import { obtenerInternacion } from '@/modules/internaciones/services/obtener-internacion'
+import { procesarHistoriaClinica } from '../../historias-clinicas/services/procesar-historia-clinica'
 
 export const procesarTurno = function (item: Turno | null): TurnoResponse | undefined {
     if (!item) return undefined
@@ -24,14 +25,7 @@ export const procesarTurno = function (item: Turno | null): TurnoResponse | unde
     const horaFin = item.TurHoraFin ? formatZone(new Date(item.TurHoraFin)) : ''
 
     // Paciente
-    const nombrePaciente = historiaClinica?.HCNombre?.trim()
-    const apellidoPaciente = historiaClinica?.HCApeSol?.trim()
-    const paciente = `${apellidoPaciente} ${nombrePaciente}`
-    const edad = historiaClinica?.HCFechaNacim
-        ? new Date().getFullYear() - new Date(historiaClinica.HCFechaNacim).getFullYear()
-        : undefined
-    const sexo = historiaClinica?.HCSexo === 'M' ? 'Masculino' : 'Femenino'
-    const nroHistoria = historiaClinica?.HCNumero
+    const { paciente, edad, sexo, nroHistoria } = procesarHistoriaClinica(historiaClinica)
 
     // Habitación
     const habitacion = item.internacion?.INHabitacion
