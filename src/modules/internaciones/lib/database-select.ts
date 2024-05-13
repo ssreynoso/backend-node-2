@@ -1,4 +1,10 @@
-export const InternacionSelect = {
+import { Internacion } from '../types'
+
+type SelectInternacion = {
+    [key in keyof Internacion]: boolean
+}
+
+export const selectInternacion: SelectInternacion = {
     INNumInt: true,
     INNumero: true,
     INHabitacion: true,

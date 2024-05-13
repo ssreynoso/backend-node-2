@@ -6,8 +6,14 @@ import { procesarObraSocial } from '@/modules/obras-sociales/services/procesar-o
 
 export const procesarInternacion = async (internacion: Internacion): Promise<InternacionResponse> => {
     // Historia clínica
-    const historiaClinica = await obtenerHistoriaClinica(internacion.INHCNumIng)
-    const historiaClinicaProcesada = procesarHistoriaClinica(historiaClinica)
+    const historiaClinica = await obtenerHistoriaClinica({ historiaClinicaId: internacion.INHCNumIng || 0 })
+    const historiaClinicaProcesada = await procesarHistoriaClinica(historiaClinica, {
+        documento: true,
+        nroHistoria: true,
+        paciente: true,
+        edad: true,
+        sexo: true
+    })
 
     // Obra social
     const obraSocial = await obtenerObraSocial(internacion.INObraSocial, internacion.INPlan)

@@ -1,14 +1,15 @@
 import { ConsoleLogger } from '@/shared/logger/console-logger'
 import { Request, Response } from 'express'
-import { obtenerInternacionesVigentes } from '../services/obtener-internaciones-vigentes'
-import { getPagination } from '@/lib/request'
+import { filtrarInternacionesVigentes } from '../services/filtrar-internaciones'
+import { getRequestQueryParameter, getPagination } from '@/lib/request'
 
-export const getInternaciones = async (req: Request, res: Response) => {
+export const getInternacionesFiltradas = async (req: Request, res: Response) => {
     try {
         const { limit, offset } = getPagination(req)
+        const filter = getRequestQueryParameter(req, 'filter')
 
         // Obtengo las internaciones
-        const internacionesVigentes = await obtenerInternacionesVigentes(limit, offset)
+        const internacionesVigentes = await filtrarInternacionesVigentes(filter, limit, offset)
 
         // Respondo con las internaciones
         res.status(200).json(internacionesVigentes)

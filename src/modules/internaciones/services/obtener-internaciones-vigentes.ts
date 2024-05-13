@@ -1,6 +1,6 @@
 import prismadb from '@/lib/prismadb'
 import { Internacion, InternacionResponse } from '@/modules/internaciones/types'
-import { InternacionSelect } from '../lib/database-select'
+import { selectInternacion } from '../lib/database-select'
 import { procesarInternacion } from './procesar-internacion'
 import { NULL_DATE } from '@/types/utils'
 
@@ -10,7 +10,7 @@ export const obtenerInternacionesVigentes = async (limit: number, offset: number
     const internaciones: Internacion[] = await prismadb.iNTERNAD.findMany({
         take: limit,
         skip: offset,
-        select: InternacionSelect,
+        select: selectInternacion,
         where: {
             INNumero: { gt: 0 },
             INFechaEgreso: NULL_DATE

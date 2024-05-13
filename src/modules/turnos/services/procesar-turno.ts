@@ -1,14 +1,18 @@
-import { Turno, TurnoPrisma, TurnoResponse } from '@/modules/turnos/types'
 import { formatZone } from '@/lib/date'
 import { getEstadoColor } from '@/lib/monitor'
 import { obtenerEstado } from './obtener-estado'
-import { obtenerHistoriaClinica } from '../../historias-clinicas/services/obtener-historia-clinica'
-import { obtenerObraSocial } from '../../obras-sociales/services/obtener-obra-social'
 import { obtenerMedico } from './obtener-medico'
-import { obtenerInternacion } from '@/modules/internaciones/services/obtener-internacion'
-import { procesarHistoriaClinica } from '../../historias-clinicas/services/procesar-historia-clinica'
 
-export const procesarTurno = function (item: Turno | null): TurnoResponse | undefined {
+import { obtenerHistoriaClinica } from '@/modules/historias-clinicas/services/obtener-historia-clinica'
+import { procesarHistoriaClinica } from '@/modules/historias-clinicas/services/procesar-historia-clinica'
+
+import { obtenerObraSocial } from '@/modules/obras-sociales/services/obtener-obra-social'
+
+import { obtenerInternacion } from '@/modules/internaciones/services/obtener-internacion'
+
+import { Turno, TurnoPrisma, TurnoResponse } from '@/modules/turnos/types'
+
+export const procesarTurno = async function (item: Turno | null): Promise<TurnoResponse | undefined> {
     if (!item) return undefined
 
     let horaIni = new Date((item.TurHoraIni as Date) || new Date()).getUTCHours()
@@ -25,7 +29,7 @@ export const procesarTurno = function (item: Turno | null): TurnoResponse | unde
     const horaFin = item.TurHoraFin ? formatZone(new Date(item.TurHoraFin)) : ''
 
     // Paciente
-    const { paciente, edad, sexo, nroHistoria } = procesarHistoriaClinica(historiaClinica)
+    const { paciente, edad, sexo, nroHistoria } = await procesarHistoriaClinica(historiaClinica)
 
     // Habitación
     const habitacion = item.internacion?.INHabitacion
@@ -81,7 +85,7 @@ const procesarTurnoInterno = async (turno: TurnoPrisma) => {
     const estado = await obtenerEstado(turno.TurEstado)
 
     // Obtengo Historia clínica
-    const historiaClinica = await obtenerHistoriaClinica(turno.TurDNIPte)
+    const historiaClinica = await obtenerHistoriaClinica({ historiaClinicaId: turno.TurDNIPte || 0 })
 
     // Obtengo internación
     const internacion = await obtenerInternacion(turno.TurNroIntInter)
