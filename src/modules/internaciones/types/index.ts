@@ -12,6 +12,8 @@ export type Internacion = Pick<
     | 'INAislado'
     | 'INHCNumIng'
     | 'INFechaIngreso'
+    | 'INHoraIngreso'
+    | 'INDiagIngreso'
     | 'INFechaEgreso'
     | 'INProtocolo'
     | 'INFecProtocolo'
@@ -30,6 +32,8 @@ export interface InternacionResponse {
     acompaniante: boolean
     aislado: boolean
     fechaIngreso: Date | null
+    horaIngreso: string
+    diagnosticoIngreso: string
     historiaClinica: HistoriaClinicaResponse
     obraSocial: ObraSocialResponse | null
     numeroAfiliado: string

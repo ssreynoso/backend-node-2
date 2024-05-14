@@ -6,7 +6,7 @@ import { obtenerMedico } from './obtener-medico'
 import { obtenerHistoriaClinica } from '@/modules/historias-clinicas/services/obtener-historia-clinica'
 import { procesarHistoriaClinica } from '@/modules/historias-clinicas/services/procesar-historia-clinica'
 
-import { obtenerObraSocial } from '@/modules/obras-sociales/services/obtener-obra-social'
+import { obtenerObraSocialConPlan } from '@/modules/obras-sociales/services/obtener-obra-social-con-plan'
 
 import { obtenerInternacion } from '@/modules/internaciones/services/obtener-internacion'
 
@@ -91,7 +91,7 @@ const procesarTurnoInterno = async (turno: TurnoPrisma) => {
     const internacion = await obtenerInternacion(turno.TurNroIntInter)
 
     // Obtengo Obra social
-    const obraSocial = await obtenerObraSocial(turno.TurOsCodigo, turno.TurOSPlan)
+    const obraSocial = await obtenerObraSocialConPlan(turno.TurOsCodigo, turno.TurOSPlan)
 
     // Obtengo médico
     const medico = await obtenerMedico(turno.TurMedEstudio)

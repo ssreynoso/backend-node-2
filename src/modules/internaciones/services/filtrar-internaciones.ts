@@ -1,9 +1,8 @@
 import prismadb from '@/lib/prismadb'
-import { Internacion, InternacionResponse } from '@/modules/internaciones/types'
-import { procesarInternacion } from './procesar-internacion'
+import { Internacion } from '@/modules/internaciones/types'
 import { NULL_DATE_STRING } from '@/types/utils'
 
-type Response = Promise<InternacionResponse[]>
+type Response = Promise<Internacion[]>
 
 export const filtrarInternacionesVigentes = async (filter: string, limit: number, offset: number): Response => {
     // Agrego los % para que busque en cualquier parte del campo
@@ -21,9 +20,5 @@ export const filtrarInternacionesVigentes = async (filter: string, limit: number
             fetch next ${offset + limit - 1} rows only;
     `
 
-    const internacionesProcesadas = await Promise.all(
-        internacionesFiltradasPorPaciente.map(internacion => procesarInternacion(internacion))
-    )
-
-    return internacionesProcesadas
+    return internacionesFiltradasPorPaciente
 }

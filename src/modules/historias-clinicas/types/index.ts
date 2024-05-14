@@ -1,4 +1,4 @@
-import { ObraSocialResponse } from '@/modules/obras-sociales/types'
+import { ObraSocialConPlanResponse } from '@/modules/obras-sociales/types'
 import { HISTORIAS } from '@prisma/client'
 
 export type HistoriaClinica = Pick<
@@ -26,7 +26,7 @@ export type HistoriaClinicaResponse = {
     nroHistoria: number | null
     fechaNacimiento: Date | undefined
     telefono: string
-    obraSocial: ObraSocialResponse | null
+    obraSocial: ObraSocialConPlanResponse | null
     numeroAfiliado: string
     medicoCabecera: string
     medicoCardiologo: string

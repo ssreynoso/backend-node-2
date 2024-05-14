@@ -1,6 +1,6 @@
 import { HistoriaClinica } from '@/modules/historias-clinicas/types'
 import { Internacion } from '@/modules/internaciones/types'
-import { ObraSocial } from '@/modules/obras-sociales/types'
+import { ObraSocialConPlan } from '@/modules/obras-sociales/types'
 import { TURNOS, ESPECIALIDADES, ESTADOSTURNOQX, MEDICOS } from '@prisma/client'
 
 export type Estado = Pick<ESTADOSTURNOQX, 'EstTQDsc' | 'EstTQCod'>
@@ -26,7 +26,7 @@ export type Turno = TurnoPrisma & {
     estado: Estado | null
     historiaClinica: HistoriaClinica | null
     internacion: Internacion | null
-    obraSocial: ObraSocial | null
+    obraSocial: ObraSocialConPlan | null
     medico: Medico | null
 }
 

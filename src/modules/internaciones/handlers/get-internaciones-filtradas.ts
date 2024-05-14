@@ -2,6 +2,7 @@ import { ConsoleLogger } from '@/shared/logger/console-logger'
 import { Request, Response } from 'express'
 import { filtrarInternacionesVigentes } from '../services/filtrar-internaciones'
 import { getRequestQueryParameter, getPagination } from '@/lib/request'
+import { procesarInternaciones } from '../services/procesar-internaciones'
 
 export const getInternacionesFiltradas = async (req: Request, res: Response) => {
     try {
@@ -10,9 +11,10 @@ export const getInternacionesFiltradas = async (req: Request, res: Response) => 
 
         // Obtengo las internaciones
         const internacionesVigentes = await filtrarInternacionesVigentes(filter, limit, offset)
+        const internacionesProcesadas = await procesarInternaciones(internacionesVigentes)
 
         // Respondo con las internaciones
-        res.status(200).json(internacionesVigentes)
+        res.status(200).json(internacionesProcesadas)
     } catch (error) {
         // Si hay un error, lo muestro en consola
         const logger = new ConsoleLogger()

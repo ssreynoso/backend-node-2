@@ -13,6 +13,8 @@ export const selectInternacion: SelectInternacion = {
     INAislado: true,
     INHCNumIng: true,
     INFechaIngreso: true,
+    INHoraIngreso: true,
+    INDiagIngreso: true,
     INFechaEgreso: true,
     INProtocolo: true,
     INFecProtocolo: true,

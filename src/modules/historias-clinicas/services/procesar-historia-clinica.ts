@@ -1,6 +1,6 @@
-import { obtenerObraSocial } from '@/modules/obras-sociales/services/obtener-obra-social'
+import { obtenerObraSocialConPlan } from '@/modules/obras-sociales/services/obtener-obra-social-con-plan'
 import { HistoriaClinica, HistoriaClinicaResponse } from '../types'
-import { procesarObraSocial } from '@/modules/obras-sociales/services/procesar-obra-social'
+import { procesarObraSocialConPlan } from '@/modules/obras-sociales/services/procesar-obra-social-con-plan'
 import { obtenerMedico } from '@/modules/turnos/services/obtener-medico'
 
 type Select = { [key in keyof HistoriaClinicaResponse]?: boolean }
@@ -34,8 +34,11 @@ export const procesarHistoriaClinica = async (
     const nroHistoria = historiaClinica!.HCNumero
 
     // Obra social
-    const obraSocial = await obtenerObraSocial(historiaClinica?.HCObraSocial || null, historiaClinica?.HCPlan || null)
-    const obraSocialProcesada = procesarObraSocial(obraSocial)
+    const obraSocial = await obtenerObraSocialConPlan(
+        historiaClinica?.HCObraSocial || null,
+        historiaClinica?.HCPlan || null
+    )
+    const obraSocialProcesada = procesarObraSocialConPlan(obraSocial)
 
     // Médicos
     const medicoCabecera = await obtenerMedico(historiaClinica?.HCMedico || null)
