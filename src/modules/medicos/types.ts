@@ -7,6 +7,7 @@ export type Medico = Pick<
     | 'METratamiento' // dr o dra
     | 'MEApellido'
     | 'MENom'
+    | 'MEEmail'
     | 'MEIntExt'
     | 'MECTelefono'
     | 'MEMatricula'
@@ -24,6 +25,7 @@ export interface MedicoResponse {
     tratamiento: Medico['METratamiento']
     nombre: Medico['MEApellido']
     apellido: Medico['MENom']
+    email: Medico['MEEmail']
     tipo: Medico['MEIntExt']
     telefonos: Medico['MECTelefono']
     matriculaNacional: Medico['MEMatricula']

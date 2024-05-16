@@ -1,0 +1,129 @@
+Principal.. Necesito pegarle a la agenda de quirófano primero?
+
+Pasos creacion de turno
+Agenda de quirofano:
+    Seleccion de protocolo probable: Suma al horario base la cantidad de horas que necesita el protocolo. El calculo de esto en caso de que haya muchos protocolos va a ser tomar el 100% del principal y el 50% de los demás.
+    Cobertura: Se puede cambiar la cobertura de la app
+
+Datos necesarios
+    [TurID]
+    NECESITO [TurSala] - QuirofanoId
+    NECESITO [Turfecha] - Fecha del turno
+    NECESITO [TurHora] - Hora del turno (HH:MM)
+    [TurVisitado] - Blanco
+    [TurVisitadoFecha] - Fecha nula
+    NECESITO [MECodigo] - Código del médico 
+    NECESITO [TurAnestesista] -> Sale del checklist (S / N)
+    [TurUsuarioAnulo]
+    NECESITO [TurInternado] - Si ya esta internado o no (S / ?)
+    NECESITO [TurFechaAsist] - Fecha de internacion? Si no esta internado?
+    NECESITO [TurHoraAsist] - Hora de internacion? Si no esta internado?
+    [TurIngQuirofano] - Supongo que inician en nulo
+    [TurFinQuirofano] - Supongo que inician en nulo
+    [TurObservSala]
+    [TurSalaDestino]
+    [TurMedEfeEspec] - Medico efector específico (S / N) -> Sale del check especifico
+    [TurAGINumInt] - Creo que es muy importante, pero no se que es
+    [TurAGInterDirecto]
+    NECESITO [TurSiglasEstudio] - Supongo que siglas del estudio principal
+    NECESITO [TurFecProbInt] - Fecha probable de internación LATE
+    NECESITO [TurHoraProInt] - Hora probable de internacion LATE
+    NECESITO [TurContacto] - Contacto del paciente. Telefono
+    NECESITO [TurTelParien1] - Telefono del pariente 1
+    NECESITO [TurRelParien1] - Relación del pariente 1 (tabla PARENTESCO)
+    NECESITO [TurTelParien2] - Telefono del pariente 2
+    NECESITO [TurRelParien2] - Relación del pariente 2 (tabla PARENTESCO)
+    [TurTelParien3]
+    [TurRelParien3]
+    [TurTelParien4]
+    [TurRelParien4]
+    NECESITO [TurDNIPte] - Numero de historia clinica interna (HCNumIng, NO HCNumero)
+    NECESITO [TurOsCodigo] - Código de la obra social
+    NECESITO [TurProcCodigo] - Código del procedimiento principal???
+    [TurAsistio] - ¿Asistió al turno? Supongo que arranca en blanco
+    NECESITO [TurObservaciones] - Observaciones del turno (generalmente usa descripcion procedimiento de nuevo)
+    NECESITO [TurNroIntInter] - Numero de internacion puede ser 0.
+    [TurAsisteMEdCabe] (S / N)
+    [TurMedEstudio] - Codigo del médico que realiza el estudio?
+    [TurNro] - 0
+    [TurHoraIni] - Inicio del turno (HORA EN DATE)
+    [TurHoraFin] - Fin el turno (HORA EN DATE)
+    [TurCantidadPac] - 0
+    [TurEnfInf] - 0
+    [TurAlergico] - 0
+    [TurDiabetico] - 0
+    [TurAnticuagu] - 0
+    [TurAntiteta] - 0
+    [TurAnalisis] - 0
+    [TurAnafecha] - NULLVALUE
+    [TurUrea] - 0
+    [TurCreati] - 0
+    [TurGlucem] - 0
+    [TurIonogra] - 0
+    [TurIonoNa] - 0
+    [TurIonoK] - 0
+    [TurHemato] - 0
+    [TurRecuento] - 0
+    [TurSobreturno] - 0
+    [TurAnulado] - 0
+    [TurHoraProp] - 0
+    [TurMinuProp] - 0
+    [TurPeso] - 0
+    [TurAltura] - 0
+    [TurProcesado] - BLANCO - PREGUNTAR
+    [TurIngreso] - PREGUNTAR
+    [TurClearCreat] - 0
+    [TurSalaOrigen] - TurSala - Supongo que son datos que almacenan con que se genero el turno
+    [TurFechaOrigen] - TurFecha - Supongo que son datos que almacenan con que se genero el turno
+    [TurHoraOrigen] - TurHora - Supongo que son datos que almacenan con que se genero el turno
+    [TurSeCodigo] - PREGUNTAR
+    [TurIngreInter]
+    [TurSalaEspec]
+    [TurfechaAnio]
+    [TurfechaMes]
+    [TurAnulaReprog]
+    [TurAnulaObs]
+    [TurMsgNuevo]
+    [TurAnuMot]
+    [TurAltaTemprana]
+    [TurFinProced]
+    [TurIniProced]
+    [TurFechaHoraOrigen]
+    [TurCtrl2MedNom]
+    [TurCtrl2MedId]
+    [TurCtrl2FecReal]
+    [TurCtrl2Fec]
+    [TurCtrl1MedNom]
+    [TurCtrl1MedId]
+    [TurCtrl1FecReal]
+    [TurCtrl1Fec]
+    [TurRecuTipoAcc]
+    [TurIngRecep]
+    [TurSPNumInt]
+    [TurCIPNumInt]
+    [TurPacSinProced]
+    [TurUTI]
+    [TurHospDia]
+    [TurAmbulatorio]
+    [TurAnatoPato]
+    [TurEco]
+    [TurLaparo]
+    [TurRX]
+    [TurHemoTerapia]
+    [TurNumAfil]
+    [TurOSPlan]
+    [TurUsuCancelo]
+    [TurCiruCancelada]
+    [TurUsrModHor]
+    [TurFchModHor]
+    [TurEstado]
+    [TurAnesCod]
+    [TurAyudante2]
+    [TurAyudante1]
+    [TurAnesFin]
+    [TurAnesIni]
+    [TurCirculante]
+    [TurIngAreaQx]
+    [TurEnfUsr]
+    [TurEnfPrep]
+    [TurCtrlSala]

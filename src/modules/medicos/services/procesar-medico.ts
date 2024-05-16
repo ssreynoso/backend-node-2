@@ -11,6 +11,7 @@ export const procesarMedico = async (medico: Medico): Promise<MedicoResponse> =>
         tratamiento: medico.METratamiento || '',
         nombre: medico.MENom?.trim() || '',
         apellido: medico.MEApellido?.trim() || '',
+        email: medico.MEEmail?.trim() || '',
         tipo: medico.MEIntExt || '',
         telefonos: medico.MECTelefono?.trim() || '',
         matriculaNacional: medico.MEMatricula,

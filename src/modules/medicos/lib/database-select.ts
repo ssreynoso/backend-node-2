@@ -9,6 +9,7 @@ export const selectMedico: SelectMedico = {
     METratamiento: true,
     MEApellido: true,
     MENom: true,
+    MEEmail: true,
     MEIntExt: true,
     MECTelefono: true,
     MEMatricula: true,

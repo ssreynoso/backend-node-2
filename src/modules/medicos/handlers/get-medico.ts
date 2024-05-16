@@ -6,7 +6,7 @@ import { obtenerMedico } from '../services/obtener-medico'
 export const getMedico = async (req: Request, res: Response) => {
     const medicoId = Number.parseInt(req.params.medicoId)
     try {
-        // Obtengo los medico
+        // Obtengo el medico
         const medico = await obtenerMedico(medicoId)
 
         // Si no existe, respondo con un error 404
